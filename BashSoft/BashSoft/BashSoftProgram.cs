@@ -4,7 +4,7 @@
 	{
 		static void Main()
 		{
-			IOManager.TraverseDirectory(0);
+			IOManager.CreateDirectoryInCurrentFolder("*2");
 		}
 	}
 }
