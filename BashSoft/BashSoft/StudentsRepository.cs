@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BashSoft
 {
@@ -47,6 +44,60 @@ namespace BashSoft
 			}
 			isDataInitialized = true;
 			OutputWriter.WriteMessageOnNewLine("Data read!");
+		}
+
+		private static bool IsQueryForCoursePossible(string courseName)
+		{
+			if (isDataInitialized)
+			{
+				if (studentsByCourse.ContainsKey(courseName))
+				{
+					return true;
+				}
+				else
+				{
+					OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
+					return false;
+				}
+			}
+			else
+			{
+				OutputWriter.DisplayException(ExceptionMessages.DataNotInitializedExceptionMessage);
+			}
+			return false;
+		}
+
+		private static bool IsQueryForStudentPossible(string courseName, string studentUserName)
+		{
+			if (IsQueryForCoursePossible(courseName) && studentsByCourse[courseName].ContainsKey(studentUserName))
+			{
+				return true;
+			}
+			else
+			{
+				OutputWriter.DisplayException(ExceptionMessages.InexistingStudentInDataBase);
+			}
+			return false;
+		}
+
+		public static void GetStudentScoresFromCourse(string courseName, string username)
+		{
+			if (IsQueryForStudentPossible(courseName, username))
+			{
+				OutputWriter.PrintStudent(new KeyValuePair<string, List<int>>(username, studentsByCourse[courseName][username]));
+			}
+		}
+
+		public static void GetAllStudentsFromCourse(string courseName)
+		{
+			if (IsQueryForCoursePossible(courseName))
+			{
+				OutputWriter.WriteMessageOnNewLine($"{courseName}:");
+				foreach (var studentMarkEntry in studentsByCourse[courseName])
+				{
+					OutputWriter.PrintStudent(studentMarkEntry);
+				}
+			}
 		}
 	}
 }

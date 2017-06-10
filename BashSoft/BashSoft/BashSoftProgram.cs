@@ -10,7 +10,9 @@ namespace BashSoft
 	{
 		static void Main()
 		{
-			IOManager.TraverseDirectory(@"D:\Projects\C-Advanced\BashSoft");
+			//IOManager.TraverseDirectory(@"D:\Projects\C-Advanced\BashSoft");
+			StudentsRepository.InitializeData();
+			StudentsRepository.GetStudentScoresFromCourse("Unity", "Ivan");
 		}
 	}
 }
