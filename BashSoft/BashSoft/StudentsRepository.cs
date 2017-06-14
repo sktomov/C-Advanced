@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace BashSoft
 {
@@ -8,13 +9,13 @@ namespace BashSoft
 		public static bool isDataInitialized = false;
 		private static Dictionary<string, Dictionary<string, List<int>>> studentsByCourse;
 
-		public static void InitializeData()
+		public static void InitializeData(string fileName)
 		{
 			if (!isDataInitialized)
 			{
 				OutputWriter.WriteMessageOnNewLine("Reading data...");
 				studentsByCourse = new Dictionary<string, Dictionary<string, List<int>>>();
-				ReadData();
+				ReadData(fileName);
 			}
 			else
 			{
@@ -22,28 +23,45 @@ namespace BashSoft
 			}
 		}
 
-		private static void ReadData()
+		private static void ReadData(string fileName)
 		{
 			string input = Console.ReadLine();
+			string path = SessionData.currentPath + "\\" + fileName;
 			while (!string.IsNullOrEmpty(input))
 			{
-				string[] tokens = input.Split(' ');
-				string course = tokens[0];
-				string student = tokens[1];
-				int mark = int.Parse(tokens[2]);
-				if (!studentsByCourse.ContainsKey(course))
-				{
-					studentsByCourse[course] = new Dictionary<string, List<int>>();
-				}
-				if (!studentsByCourse[course].ContainsKey(student))
-				{
-					studentsByCourse[course][student] = new List<int>();
-				}
-				studentsByCourse[course][student].Add(mark);
+				
 				input = Console.ReadLine();
 			}
-			isDataInitialized = true;
-			OutputWriter.WriteMessageOnNewLine("Data read!");
+			if (File.Exists(path))
+			{
+				string[] allInputLines = File.ReadAllLines(path);
+				for (int line = 0; line < allInputLines.Length; line++)
+				{
+					if (!string.IsNullOrEmpty(allInputLines[line]))
+					{
+						string[] data = allInputLines[line].Split(' ');
+						string course = data[0];
+						string student = data[1];
+						int mark = int.Parse(data[2]);
+						if (!studentsByCourse.ContainsKey(course))
+						{
+							studentsByCourse[course] = new Dictionary<string, List<int>>();
+						}
+						if (!studentsByCourse[course].ContainsKey(student))
+						{
+							studentsByCourse[course][student] = new List<int>();
+						}
+						studentsByCourse[course][student].Add(mark);
+					}
+				}
+				isDataInitialized = true;
+				OutputWriter.WriteMessageOnNewLine("Data read!");
+			}
+			else
+			{
+				OutputWriter.DisplayException(ExceptionMessages.FileDoesNotExist);
+			}
+			
 		}
 
 		private static bool IsQueryForCoursePossible(string courseName)
