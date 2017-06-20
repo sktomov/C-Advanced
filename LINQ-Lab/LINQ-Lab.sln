@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.MinEvenNumber", "5.MinEve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.FindAndSumIntegers", "6.FindAndSumIntegers\6.FindAndSumIntegers.csproj", "{4867F71F-5215-4232-A8CC-D85342B450C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.BoundedNumbers", "7.BoundedNumbers\7.BoundedNumbers.csproj", "{8AA182BB-AB84-48C8-85B8-FFDD478D49C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8.MapDistricts", "8.MapDistricts\8.MapDistricts.csproj", "{6758D64B-4A59-4853-839E-DC00607ABEFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{4867F71F-5215-4232-A8CC-D85342B450C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4867F71F-5215-4232-A8CC-D85342B450C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4867F71F-5215-4232-A8CC-D85342B450C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AA182BB-AB84-48C8-85B8-FFDD478D49C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AA182BB-AB84-48C8-85B8-FFDD478D49C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AA182BB-AB84-48C8-85B8-FFDD478D49C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AA182BB-AB84-48C8-85B8-FFDD478D49C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6758D64B-4A59-4853-839E-DC00607ABEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6758D64B-4A59-4853-839E-DC00607ABEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6758D64B-4A59-4853-839E-DC00607ABEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6758D64B-4A59-4853-839E-DC00607ABEFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
